@@ -1,0 +1,57 @@
+{
+  "entities": {
+    "Poll": {
+      "title": "Poll",
+      "description": "Live poll for students",
+      "type": "object",
+      "properties": {
+        "question": { "type": "string" },
+        "options": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "votes": {
+          "type": "object",
+          "description": "Map of option index to vote count"
+        },
+        "active": { "type": "boolean" }
+      },
+      "required": ["question", "options", "votes", "active"]
+    },
+    "QuizResult": {
+      "title": "Quiz Result",
+      "description": "Student quiz scores",
+      "type": "object",
+      "properties": {
+        "studentName": { "type": "string" },
+        "score": { "type": "integer" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["studentName", "score", "timestamp"]
+    },
+    "SessionState": {
+      "title": "Session State",
+      "description": "Global state of the lesson",
+      "type": "object",
+      "properties": {
+        "currentHour": { "type": "integer" },
+        "activePollId": { "type": "string" }
+      },
+      "required": ["currentHour"]
+    }
+  },
+  "firestore": {
+    "/polls/{pollId}": {
+      "schema": "Poll",
+      "description": "Collection of live polls"
+    },
+    "/quizResults/{resultId}": {
+      "schema": "QuizResult",
+      "description": "Collection of student quiz results"
+    },
+    "/session/state": {
+      "schema": "SessionState",
+      "description": "Singleton for lesson state"
+    }
+  }
+}

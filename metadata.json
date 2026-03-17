@@ -1,0 +1,8 @@
+{
+  "name": "Chaos Corp Simulator",
+  "description": "Un'app interattiva e ironica per imparare l'organizzazione aziendale tra meme e fail d'ufficio.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
